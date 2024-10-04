@@ -12,9 +12,13 @@ fi
 # Change ownership to ubuntu user
 sudo chown -R ubuntu:ubuntu "/home/ubuntu/$PROJECT_MAIN_DIR_NAME"
 
+# Update package list and install python3-venv
+sudo apt update -y
+sudo apt install python3-venv -y
+
 # Create virtual environment
 echo "Creating virtual environment..."
-virtualenv "/home/ubuntu/$PROJECT_MAIN_DIR_NAME/venv"
+python3 -m venv "/home/ubuntu/$PROJECT_MAIN_DIR_NAME/venv"  # Corrected the command to use python3-venv
 
 # Activate virtual environment
 echo "Activating virtual environment..."
