@@ -20,7 +20,8 @@ from todolist import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index),
+    # path('', views.index),
+    path('', views.Todolist_View),
     path('task_list', views.Todolist_View),
     path('category', views.Category_View),
     path('task/add', views.add_task, name='add_task'),
