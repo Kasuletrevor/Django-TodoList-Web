@@ -18,8 +18,7 @@ sudo apt install python3-venv -y
 
 # Create virtual environment
 echo "Creating virtual environment..."
-python3 -m venv "/home/ubuntu/$PROJECT_MAIN_DIR_NAME/venv"  # Corrected the command to use python3-venv
-
+python3 -m venv "/home/ubuntu/$PROJECT_MAIN_DIR_NAME/venv" 
 # Activate virtual environment
 echo "Activating virtual environment..."
 source "/home/ubuntu/$PROJECT_MAIN_DIR_NAME/venv/bin/activate"
