@@ -1,0 +1,56 @@
+{% extends 'base.html'%}
+{%block category%}
+<div class="card-body">
+    <button class="btn btn-primary mb-2" hx-get="{% url 'add_category' %}" hx-target="#dialog">New Category</button>
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for Category in category %}
+                <tr>
+                    <td>{{ Category.id}}</td>
+                    <td>{{ Category.name}}</td>
+                    <td>{{ Category.description}}</td>
+                    <td><a class="btn btn-primary" hx-get="{% url 'edit_category' id=Category.id %}"
+                            hx-target="#dialog">Edit</a>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#hapus-{{Category.id}}">Delete</button>
+                    </td>
+                    <div class="modal fade" tabindex="-1" role="dialog" id="hapus-{{Category.id}}">
+                        <div class=" modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" style="font-weight: bold;">Are you sure want to delete?</h5>
+                                    <button type="button" class="btn text-danger" data-bs-dismiss="modal"
+                                        aria-label="Close">X</button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Category Name : {{ Category.name}}</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn " data-bs-dismiss="modal">Cancel</button>
+                                    <a href="{% url 'remove_category' Category.id%}" class="btn btn-danger">Sure</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tr>
+
+            </tbody>
+            {% endfor %}
+
+        </table>
+    </div>
+</div>
+
+<div id="modal" class="modal fade">
+    <div id="dialog" class="modal-dialog modal-dialog-centered" hx-target="this"></div>
+</div>
+{%endblock%}

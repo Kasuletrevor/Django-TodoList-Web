@@ -1,0 +1,70 @@
+{%load static%}
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>AuroraTech Todolist</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/sb-admin-2.css'%}" rel="stylesheet">
+
+  <style>
+    body {
+      background-image: url("{% static 'img/bg.jpg'%}");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/cover.css'%}" rel="stylesheet">
+</head>
+
+<body class="d-flex h-100 text-center text-dark">
+
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+      <div>
+        <h3 class="float-md-start mb-0">Aurora Tech</h3>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" href="/task_list">To Do List</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="px-3">
+      <h1>Todo List Website using Django</h1>
+      <p class="lead">This is a powerful and intuitive to-do list app designed to help you stay organized, focused, and
+        productive. With its sleek and user-friendly interface, it provides a comprehensive set of features that cater
+        to your personal and professional task management needs.</p>
+    </main>
+
+    <footer class="mt-auto text-dark-50">
+      <p>To do list web by <a href="https://instagram.com/jaludwija37" class="text-gray-400">@jaludwija37</a></p>
+    </footer>
+  </div>
+
+
+
+</body>
+
+</html>

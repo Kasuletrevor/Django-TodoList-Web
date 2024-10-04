@@ -1,0 +1,28 @@
+{% load widget_tweaks %}
+{% with WIDGET_ERROR_CLASS='is-invalid' %}
+<form hx-post="{{ request.path }}" hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}' class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Task</h5>
+        <button type="button" class="btn text-danger" data-bs-dismiss="modal" aria-label="Close">X</button>
+    </div>
+    <div class="modal-body">
+        <form action="" method="post">
+            {{form.as_p}}
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="showModal()">
+            Cancel
+        </button>
+        <button type="submit" class="btn btn-primary" onclick="showModal()">Save</button>
+    </div>
+
+    <script>
+        function showModal() {
+            setTimeout(function () {
+                window.location.href = '/task_list';  // Replace '/home' with your actual URL
+            }, 100);
+        }
+    </script>
+</form>
+{% endwith %}

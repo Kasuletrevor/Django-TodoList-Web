@@ -1,0 +1,198 @@
+{% extends 'base.html'%}
+{%block home%}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class=" align-items-center mb-4 d-flex justify-content-between">
+        <div>
+            <h1 class="h3 mb-0 mr-2 text-gray-800">Your to do list
+                <button type="button" class=" btn border ml-2" style="border: 1rem;" hx-get="{% url 'add_task' %}"
+                    hx-target="#dialog">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </h1>
+
+        </div>
+
+        <button class="btn btn-primary" hx-get="{% url 'add_category' %}" hx-target="#dialog">New Category</button>
+
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                To do</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{todo_count}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                On Going</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ongoing_count}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-pen fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Done</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{done_count}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-check fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pending Requests Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                Abandoned</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{abandoned_count}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-ban fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Row -->
+
+    <div class="row">
+        <!-- Basic Card Example -->
+
+        <div class="col-lg-3 ">
+            {% for Task in todo_tasks %}
+            <div class="card shadow mb-4 ">
+
+                <div class="card-header py-3 d-flex flex-row justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">{{Task.title}}
+                        <div class="badge rounded-pill bg-danger" style="color: white;"><i class="fas fa-tag text-white"
+                                style="font-size: 0.6rem;"></i>
+                            {{Task.category_id}}
+
+                        </div>
+                    </h6>
+                    {%include 'status_card.html'%}
+                </div>
+                {%include 'task_card.html'%}
+                {%include 'modal.html'%}
+                {% endfor %}
+            </div>
+            <div class="col-lg-3 ">
+                {% for Task in ongoing_tasks %}
+                <div class="card shadow mb-4 ">
+
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-warning">{{Task.title}} <div
+                                class="badge rounded-pill bg-danger" style="color: white;"><i
+                                    class="fas fa-tag text-white" style="font-size: 0.6rem;"></i>
+                                {{Task.category_id}}
+                            </div>
+                        </h6>
+                        {%include 'status_card.html'%}
+                    </div>
+
+                    {%include 'task_card.html'%}
+
+                    {%include 'modal.html'%}
+                    {% endfor %}
+                </div>
+                <div class="col-lg-3 ">
+                    {% for Task in done_tasks %}
+                    <div class="card shadow mb-4 ">
+
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-success">{{Task.title}} <div
+                                    class="badge rounded-pill bg-danger" style="color: white;"><i
+                                        class="fas fa-tag text-white" style="font-size: 0.6rem;"></i>
+                                    {{Task.category_id}}
+                                </div>
+                            </h6>
+                            {%include 'status_card.html'%}
+                        </div>
+                        {%include 'task_card.html'%}
+                        {%include 'modal.html'%}
+                        {% endfor %}
+                    </div>
+                    <div class="col-lg-3 ">
+                        {% for Task in abandoned_tasks %}
+                        <div class="card shadow mb-4 ">
+
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-danger">{{Task.title}} <div
+                                        class="badge rounded-pill bg-danger" style="color: white;"><i
+                                            class="fas fa-tag text-white" style="font-size: 0.6rem;"></i>
+                                        {{Task.category_id}}
+                                    </div>
+                                </h6>
+                                {%include 'status_card.html'%}
+                            </div>
+                            {%include 'task_card.html'%}
+                            {%include 'modal.html'%}
+                            {% endfor %}
+                        </div>
+                        <!-- Content Row -->
+                        <div class="row">
+
+                        </div>
+
+                    </div>
+                    <!-- /.container-fluid -->
+
+                </div>
+                <!-- End of Main Content -->
+
+                <!-- Placeholder for the modal -->
+                <div id="modal" class="modal fade">
+                    <div id="dialog" class="modal-dialog modal-dialog-centered" hx-target="this"></div>
+                </div>
+
+                <div class="toast-container position-fixed top-0 end-0 p-3">
+                    <div id="toast" class="toast align-items-center text-white bg-success border-0" role="alert"
+                        aria-live="assertive" aria-atomic="true">
+                        <div class="d-flex">
+                            <div id="toast-body" class="toast-body"></div>
+                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                                aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+                {%endblock%}

@@ -1,0 +1,23 @@
+</div>
+
+<div class="modal fade" id="edit-{{Task.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Task Details</h5>
+                <button type="button" class="btn text-danger" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post">
+                    {%csrf_token%}
+                    {{form.as_p}}
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn " data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Change</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

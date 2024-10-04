@@ -1,0 +1,53 @@
+<div class="dropdown no-arrow">
+    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+
+        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+        <div class="dropdown-header">Change Status :</div>
+        <a class="dropdown-item" href="{% url 'change_status' Task.id 1%}">
+
+            <div class="status-circle bg-primary"></div>
+            To Do
+        </a>
+        <a class="dropdown-item" href="{% url 'change_status' Task.id 2%}">
+
+            <div class="status-circle bg-warning"></div>
+            On Going
+        </a>
+        <a class="dropdown-item" href="{% url 'change_status' Task.id 3%}">
+
+            <div class="status-circle bg-success"></div>
+            Done
+        </a>
+        <a class="dropdown-item" href="{% url 'change_status' Task.id 4%}">
+
+            <div class="status-circle bg-danger"></div>
+            Abandoned
+        </a>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item" class="btn btn-danger" data-bs-toggle="modal"
+            data-bs-target="#hapus-{{Task.id}}">Delete</button>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="hapus-{{Task.id}}">
+        <div class=" modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="font-weight: bold;">Are you sure want to delete?</h5>
+                    <button type="button" class="btn text-danger" data-bs-dismiss="modal" aria-label="Close">X</button>
+                </div>
+                <div class="modal-body">
+                    <p>Task Title : {{ Task.title}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn " data-bs-dismiss="modal">Cancel</button>
+                    <a href="{% url 'remove_task' Task.id%}" class="btn btn-danger">Sure</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
