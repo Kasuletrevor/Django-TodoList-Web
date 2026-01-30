@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a web-based task management application built with Django framework. The application provides a comprehensive todolist system with task categorization, status tracking, and an intuitive user interface for managing personal and professional tasks.
+This is a web-based task management application built with Django framework. The application provides a comprehensive todo list system with task categorization, status tracking, and an intuitive user interface for managing personal and professional tasks.
 
 ## Project Context
 
@@ -115,7 +115,11 @@ The script will automatically:
 - Configure Gunicorn service
 - Start the application
 
-3. Configure security groups to allow HTTP/HTTPS traffic
+3. Configure security groups to allow inbound traffic:
+   - Port 8000 (or your configured port) for application access
+   - Port 80 for HTTP (if using a reverse proxy)
+   - Port 443 for HTTPS (if using a reverse proxy with SSL)
+   - Port 22 for SSH access (for management)
 4. Access the application via the EC2 instance's public IP or DNS
 
 ## Project Structure
@@ -213,4 +217,4 @@ This project is available for educational purposes.
 
 ## Acknowledgments
 
-This repository was forked from an original todolist application and adapted for cloud computing deployment exercises in the Masters program.
+This repository was forked from an original todo list application and adapted for cloud computing deployment exercises in the Masters program.
